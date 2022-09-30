@@ -1,5 +1,7 @@
+package HW9;
+
 //  Домашние задания к Уроку 9 «Объекты и Классы»
-public class Main {
+class Main {
     public static void main(String[] args) {
         System.out.println();
         task1();
