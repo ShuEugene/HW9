@@ -1,4 +1,4 @@
-package HW9;
+package hw9;
 
 class Autor {
     private final String firstName, lastName;

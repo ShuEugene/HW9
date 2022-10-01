@@ -1,4 +1,4 @@
-package HW9;
+package hw9;
 
 class Book {
     private final String title;

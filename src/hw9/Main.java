@@ -1,4 +1,4 @@
-package HW9;
+package hw9;
 
 //  Домашние задания к Уроку 9 «Объекты и Классы»
 class Main {
