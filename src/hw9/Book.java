@@ -1,14 +1,28 @@
 package hw9;
 
-class Book {
+import java.util.Objects;
+
+public class Book {
     private final String title;
-    Autor autor;
+    public Autor autor;
     private int yearOfPublication;
 
-    Book(String title, Autor autor, int yearOfPublication) {
-        this.title = title;
-        this.autor = autor;
-        this.yearOfPublication = yearOfPublication;
+    public Book(String title, Autor autor, int yearOfPublication) {
+        if (!title.equals("")) {
+            this.title = title;
+        } else {
+            throw new IllegalArgumentException("Название не указано.");
+        }
+        if (autor != null) {
+            this.autor = autor;
+        } else {
+            throw new IllegalArgumentException("Автор не указан.");
+        }
+        if (yearOfPublication > 0) {
+            this.yearOfPublication = yearOfPublication;
+        } else {
+            throw new IllegalArgumentException("Год указан некорректно.");
+        }
     }
 
     public String getTitle() {
@@ -24,6 +38,40 @@ class Book {
     }
 
     public void setYearOfPublication(int yearOfPublication) {
-        this.yearOfPublication = yearOfPublication;
+        if (yearOfPublication > 0) {
+            this.yearOfPublication = yearOfPublication;
+        } else {
+            throw new IllegalArgumentException("Год указан некорректно.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Наименование: \"" + this.title
+                + "\"; автор: " + this.autor
+                + "; год " + this.yearOfPublication;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, autor, yearOfPublication);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            throw new IllegalArgumentException("! Сопоставление с null'объектом.");
+        }
+        if (this == o) return true;
+        if (this.hashCode() != o.hashCode()) {
+            return false;
+        }
+        if (!(o instanceof Book)) {
+            throw new IllegalArgumentException("! Попытка сопоставить данные объектов разных типов.");
+        }
+        Book book = (Book) o;
+        return this.title.equals(book.title)
+                && this.autor.equals(book.autor)
+                && this.yearOfPublication == book.yearOfPublication;
     }
 }
